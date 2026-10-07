@@ -1,5 +1,7 @@
 # AI Merchant Messaging Engine
 
+**Live API:** https://ai-merchant-messaging-engine.onrender.com/docs (Render free plan, so the first request after a while asleep takes ~1 minute)
+
 [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/wreckVarun/ai-merchant-messaging-engine)
 
 A FastAPI service that turns business events (a delayed settlement, a spike in failed payments, an expiring KYC, a festival) into short notifications for small merchants.
