@@ -1,0 +1,7 @@
+[
+  {"category": "default", "tone": "friendly", "max_chars": 320, "allowed_offers": [], "banned_terms": ["guaranteed", "risk-free"], "disclaimer": null},
+  {"category": "grocery", "tone": "warm and practical", "max_chars": 300, "allowed_offers": ["0% MDR on UPI payments for 30 days"], "banned_terms": ["guaranteed", "free money"], "disclaimer": "T&C apply.", "peak_hours": "07:00-10:00"},
+  {"category": "restaurant", "tone": "upbeat", "max_chars": 300, "allowed_offers": ["Free QR standee and festive menu listing"], "banned_terms": ["guaranteed"], "disclaimer": "T&C apply.", "peak_hours": "19:00-23:00"},
+  {"category": "pharmacy", "tone": "calm and formal", "max_chars": 280, "allowed_offers": [], "banned_terms": ["cure", "guaranteed", "discount on medicines"], "disclaimer": null, "peak_hours": "09:00-21:00"},
+  {"category": "electronics", "tone": "professional", "max_chars": 320, "allowed_offers": ["No-cost EMI on cards above Rs 10,000"], "banned_terms": ["guaranteed", "lowest price"], "disclaimer": "EMI subject to bank approval. T&C apply.", "peak_hours": "17:00-21:00"}
+]

@@ -1,0 +1,6 @@
+[
+  {"merchant_id": "m_1001", "business_name": "Sharma Kirana Store", "owner_name": "Ramesh Sharma", "category": "grocery", "city": "Delhi", "language": "hi", "tier": "standard", "preferred_channel": "whatsapp"},
+  {"merchant_id": "m_1002", "business_name": "Spice Route Cafe", "owner_name": "Anita Rao", "category": "restaurant", "city": "Bengaluru", "language": "en", "tier": "gold", "preferred_channel": "whatsapp"},
+  {"merchant_id": "m_1003", "business_name": "CarePlus Pharmacy", "owner_name": "Imran Khan", "category": "pharmacy", "city": "Lucknow", "language": "en", "tier": "standard", "preferred_channel": "sms", "marketing_opt_in": false},
+  {"merchant_id": "m_1004", "business_name": "Gadget Hub", "owner_name": "Priya Mehta", "category": "electronics", "city": "Mumbai", "language": "en", "tier": "platinum", "preferred_channel": "email", "opted_out_channels": ["push"]}
+]
