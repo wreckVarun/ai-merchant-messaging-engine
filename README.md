@@ -1,5 +1,7 @@
 # AI Merchant Messaging Engine
 
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/wreckVarun/ai-merchant-messaging-engine)
+
 A FastAPI service that turns business events (a delayed settlement, a spike in failed payments, an expiring KYC, a festival) into short notifications for small merchants.
 
 The design rule is simple: **code decides what to say, the LLM only decides how to say it.**
@@ -99,7 +101,7 @@ pytest -q
 
 ## Deploy to Render
 
-`render.yaml` is a Render Blueprint. Push this folder to a GitHub repo, then in Render choose **New > Blueprint** and pick the repo. Set `GEMINI_API_KEY` in the service's environment when prompted (or leave it empty to run on templates). Render uses `/health` as the health check.
+`render.yaml` is a Render Blueprint. Click the **Deploy to Render** button at the top, or in Render choose **New > Blueprint** and pick this repo. Set `GEMINI_API_KEY` in the service's environment when prompted (or leave it empty to run on templates). Render uses `/health` as the health check.
 
 ## Project layout
 
