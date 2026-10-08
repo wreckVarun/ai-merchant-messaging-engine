@@ -1,3 +1,5 @@
+import json
+
 import httpx
 import pytest
 
@@ -107,12 +109,14 @@ def test_gemini_phraser_parses_response(merchant, grocery):
     def handler(request):
         seen["key"] = request.headers["x-goog-api-key"]
         seen["url"] = str(request.url)
+        seen["body"] = json.loads(request.content)
         return httpx.Response(200, json={"candidates": [{"content": {"parts": [{"text": " Hello there \n"}]}}]})
 
     out = _gemini_with(handler).phrase(settlement_plan(merchant, grocery))
     assert out == "Hello there"
     assert seen["key"] == "test-key"
-    assert "gemini-3.8-flash:generateContent" in seen["url"]
+    assert "gemini-3.5-flash-lite:generateContent" in seen["url"]
+    assert seen["body"]["generationConfig"]["thinkingConfig"] == {"thinkingLevel": "minimal"}
 
 
 def test_gemini_http_error_falls_back(merchant, grocery):

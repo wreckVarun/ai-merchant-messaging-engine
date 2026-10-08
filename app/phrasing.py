@@ -19,7 +19,7 @@ import httpx
 from app.models import MessagePlan, TriggerType
 
 GEMINI_URL = "https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
-DEFAULT_GEMINI_MODEL = "gemini-3.8-flash"
+DEFAULT_GEMINI_MODEL = "gemini-3.5-flash-lite"
 
 
 # ---------------------------------------------------------------------------
@@ -187,7 +187,7 @@ class GeminiPhraser:
         api_key: str,
         model: str = DEFAULT_GEMINI_MODEL,
         client: httpx.Client | None = None,
-        timeout: float = 10.0,
+        timeout: float = 15.0,
     ) -> None:
         self.api_key = api_key
         self.model = model
@@ -199,7 +199,14 @@ class GeminiPhraser:
                 "parts": [{"text": "You write short, accurate notifications for small-business merchants of a payments company."}]
             },
             "contents": [{"role": "user", "parts": [{"text": build_prompt(plan)}]}],
-            "generationConfig": {"temperature": 0.2, "maxOutputTokens": 256},
+            # Thinking tokens count against maxOutputTokens; a one-line notification
+            # needs the least thinking the model allows, or the call is slow and can
+            # come back empty.
+            "generationConfig": {
+                "temperature": 0.2,
+                "maxOutputTokens": 1024,
+                "thinkingConfig": {"thinkingLevel": "minimal"},
+            },
         }
         try:
             resp = self.client.post(
