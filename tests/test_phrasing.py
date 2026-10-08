@@ -67,6 +67,7 @@ def test_prompt_contains_facts_and_constraints(merchant, grocery):
     prompt = build_prompt(settlement_plan(merchant, grocery))
     assert "Rs 12,34,567" in prompt and "9 Oct 2026" in prompt
     assert "guaranteed" in prompt
+    assert "Do not add a reason or cause" in prompt
 
 
 class FakeLLM:

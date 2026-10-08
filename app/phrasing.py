@@ -170,6 +170,10 @@ def build_prompt(plan: MessagePlan) -> str:
         *[f"- {k}: {v}" for k, v in facts.items()],
         "These values must appear exactly as written: "
         + ", ".join(repr(facts[k]) for k in plan.required_facts),
+        # The guardrail can check numbers and banned words, not invented context,
+        # so the prompt has to rule that out (a live run once added "due to technical reasons").
+        "Say only what these facts support. Do not add a reason or cause, an apology, "
+        "a promise, a timeline or any other detail that is not listed above.",
     ]
     if plan.call_to_action:
         lines.append(f"End with this call to action, reworded if needed: {plan.call_to_action}")
