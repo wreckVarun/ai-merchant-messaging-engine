@@ -61,7 +61,7 @@ To use Gemini for phrasing, set a key first (get one at https://aistudio.google.
 
 ```bash
 export GEMINI_API_KEY=your-key
-export GEMINI_MODEL=gemini-2.5-flash   # optional, this is the default
+export GEMINI_MODEL=gemini-3.8-flash   # optional, this is the default
 ```
 
 ### Example

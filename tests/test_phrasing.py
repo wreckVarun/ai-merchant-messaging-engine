@@ -112,7 +112,7 @@ def test_gemini_phraser_parses_response(merchant, grocery):
     out = _gemini_with(handler).phrase(settlement_plan(merchant, grocery))
     assert out == "Hello there"
     assert seen["key"] == "test-key"
-    assert "gemini-2.5-flash:generateContent" in seen["url"]
+    assert "gemini-3.8-flash:generateContent" in seen["url"]
 
 
 def test_gemini_http_error_falls_back(merchant, grocery):

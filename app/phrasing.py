@@ -19,7 +19,7 @@ import httpx
 from app.models import MessagePlan, TriggerType
 
 GEMINI_URL = "https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
-DEFAULT_GEMINI_MODEL = "gemini-2.5-flash"
+DEFAULT_GEMINI_MODEL = "gemini-3.8-flash"
 
 
 # ---------------------------------------------------------------------------
