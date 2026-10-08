@@ -99,7 +99,7 @@ A Hindi-speaking merchant (`m_1001`) gets Hindi output, for example:
 pytest -q
 ```
 
-60 tests cover every trigger threshold, each merchant and category rule, determinism of the plan, the guardrail (length, missing facts, banned terms), the fallback path when Gemini errors or returns bad text, the Gemini request/response handling (with a mocked HTTP transport, so no key or network needed), and all five endpoints. A parametrized test also checks that every template, for every seeded merchant and trigger, passes the same guardrail the LLM output must pass.
+61 tests cover every trigger threshold, each merchant and category rule, determinism of the plan, the guardrail (length, missing facts, banned terms), the fallback path when Gemini errors or returns bad text, the Gemini request/response handling (with a mocked HTTP transport, so no key or network needed), and all five endpoints. A parametrized test also checks that every template, for every seeded merchant and trigger, passes the same guardrail the LLM output must pass.
 
 ## Deploy to Render
 
