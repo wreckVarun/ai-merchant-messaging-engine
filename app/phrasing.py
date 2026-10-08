@@ -69,6 +69,10 @@ def body_budget(plan: MessagePlan) -> int:
 
 def finalize(plan: MessagePlan, body: str) -> str:
     body = " ".join(body.split())
+    # The LLM sometimes drops the closing full stop; without it the disclaimer
+    # runs on ("...in the app T&C apply.").
+    if body and body[-1] not in ".!?।":
+        body += "।" if plan.language == "hi" else "."
     return f"{body} {plan.disclaimer}" if plan.disclaimer else body
 
 

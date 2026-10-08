@@ -9,6 +9,7 @@ from app.phrasing import (
     TemplatePhraser,
     _inr,
     build_prompt,
+    finalize,
     phrase_with_guardrail,
     validate_text,
 )
@@ -114,7 +115,7 @@ def test_gemini_phraser_parses_response(merchant, grocery):
         return httpx.Response(200, json={"candidates": [{"content": {"parts": [{"text": " Hello there \n"}]}}]})
 
     out = _gemini_with(handler).phrase(settlement_plan(merchant, grocery))
-    assert out == "Hello there"
+    assert out == "Hello there."
     assert seen["key"] == "test-key"
     assert "gemini-3.5-flash-lite:generateContent" in seen["url"]
     assert seen["body"]["generationConfig"]["thinkingConfig"] == {"thinkingLevel": "minimal"}
@@ -124,3 +125,10 @@ def test_gemini_http_error_falls_back(merchant, grocery):
     llm = _gemini_with(lambda r: httpx.Response(500, json={"error": "boom"}))
     _, used, reason = phrase_with_guardrail(settlement_plan(merchant, grocery), llm, TemplatePhraser())
     assert used == "template" and reason.startswith("Gemini call failed")
+
+
+def test_finalize_closes_sentence_before_disclaimer(merchant, grocery):
+    plan = settlement_plan(merchant, grocery).model_copy(update={"disclaimer": "T&C apply.", "language": "en"})
+    assert finalize(plan, "Track it in the app") == "Track it in the app. T&C apply."
+    assert finalize(plan, "Track it in the app!") == "Track it in the app! T&C apply."
+    assert finalize(plan.model_copy(update={"language": "hi"}), "ऐप में देखें") == "ऐप में देखें। T&C apply."
