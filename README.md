@@ -90,6 +90,10 @@ curl -X POST localhost:8000/messages/generate \
 }
 ```
 
+With `GEMINI_API_KEY` set, the same request comes back with `"phraser": "gemini"` and the
+model's wording, still carrying every required fact, for example:
+`Hi Anita Rao, Spice Route Cafe had a 31% payment failure rate in the last 15 minutes. Check your payment terminal and internet connection.`
+
 A Hindi-speaking merchant (`m_1001`) gets Hindi output, for example:
 `नमस्ते Ramesh Sharma, आपका KYC 2 दिनों में समाप्त होगा। ऐप में अपना KYC रिन्यू करें।`
 
